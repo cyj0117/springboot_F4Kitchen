@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.dao.ShareDao">
+    <resultMap id="ShareMap" type="com.aaa.entity.Share">
+        <id column="sid" property="sid"></id>
+        <result column="content" property="content"></result>
+        <result column="picture" property="picture"></result>
+        <result column="sharetime" property="sharetime"></result>
+        <result column="ushareid" property="ushareid"></result>
+        <association property="user" javaType="com.aaa.entity.User">
+            <id column="uid" property="uid"></id>
+            <result column="uname" property="uname"></result>
+        </association>
+    </resultMap>
+
+    <select id="listShare" resultMap="ShareMap">
+        select s.*,u.uname from share s
+        left join user u on s.ushareid = u.uid
+    </select>
+
+    <delete id="delShare">
+        delete from share where sid = #{sid}
+    </delete>
+
+</mapper>

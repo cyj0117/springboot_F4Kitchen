@@ -161,14 +161,19 @@ public class UtilsController {
         }
     }
 
-    @RequestMapping("deleteType")
-    public Object delete_type(Integer tid) {
-        Integer del = typeService.delete(tid);
-        if (del == 1) {
-            return del;
-        } else {
-            return 0;
-        }
+//    @RequestMapping("deleteType")
+//    public Object delete_type(Integer tid) {
+//        Integer del = typeService.delete(tid);
+//        if (del == 1) {
+//            return del;
+//        } else {
+//            return 0;
+//        }
+//    }
+    @RequestMapping(value = "deleteType/{tid}",method = RequestMethod.GET )
+    public Integer delete_type(@PathVariable("tid") Integer tid)
+    {
+        return typeService.delete(tid);
     }
 
     //用户管理
@@ -212,7 +217,19 @@ public class UtilsController {
         return cookBookService.listAll();
     }
 
+    @Resource
+    ShareService shareService;
 
+    @RequestMapping("findShare")
+    public List<Share> listShare(){
+        return shareService.listShare();
+    }
+
+    @RequestMapping(value = "delShare/{sid}",method = RequestMethod.GET )
+    public Integer delShare(@PathVariable("sid") Integer sid)
+    {
+        return shareService.delShare(sid);
+    }
 
 
 
