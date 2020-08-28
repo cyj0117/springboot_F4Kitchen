@@ -3,7 +3,35 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aaa.dao.UserDao">
-    <select id="findAll" resultType="com.aaa.entity.User">
-        select * from user
+    <resultMap id="UserMapper" type="com.aaa.entity.User">
+        <id column="uid" property="uid"></id>
+        <result column="uname" property="uname"></result>
+        <result column="account" property="account"></result>
+        <result column="gender" property="gender"></result>
+        <result column="phone" property="phone"></result>
+        <result column="money" property="money"></result>
+        <result column="usertime" property="usertime"></result>
+        <result column="bantime" property="bantime"></result>
+        <result column="state" property="state"></result>
+
+        <collection property="cookBook" ofType="com.aaa.entity.CookBook">
+            <id column="cid" property="cid"></id>
+            <result property="cname" column="cname"></result>
+        </collection>
+
+        <collection property="cookUser" ofType="com.aaa.entity.CookUser">
+            <id column="cuid" property="cuid"></id>
+            <result property="ccuid" column="ccuid"></result>
+            <result property="ucuid" column="ucuid"></result>
+        </collection>
+
+    </resultMap>
+    <select id="findAll"  resultMap="UserMapper">
+       select u.uid,u.uname,u.account,u.gender,u.phone,u.money,u.usertime,u.bantime,u.state,c.cname from user u
+			 left join cookuser cu on cu.ucuid = u.uid
+       left join cookbook c on c.cid = cu.cuid
     </select>
+    <update id="update">
+        update state set state=#{state} where uid=#{uid}
+    </update>
 </mapper>

@@ -96,7 +96,6 @@ public class UtilsController {
         List<Account> accounts = accountService.ListAll();
         return accounts;
     }
-
     @ResponseBody
     @RequestMapping("insert")
     public Object insert(@RequestBody Account account) {
@@ -172,7 +171,7 @@ public class UtilsController {
         }
     }
 
-    //用户查询
+    //用户管理
     @Resource
     UserServiceImpl userService;
 
@@ -182,28 +181,30 @@ public class UtilsController {
         return userService.findAll();
     }
 
-    @RequestMapping(value = "addUser", method = RequestMethod.POST)
-    public Integer addUser(@RequestBody User user) {
-        return userService.addUser(user);
-    }
 
+//   @RequestMapping("updateUser")
+//    public Object update(@RequestBody User user) {
+//        Integer update = userService.updateUser(user);
+//        if (update == 1) {
+//            return update;
+//        } else {
+//            return 0;
+//        }
+//    }
     @RequestMapping(value = "updateUser", method = RequestMethod.POST)
-    @ResponseBody
-    public Integer updateUser(@RequestBody User user) {
+    public Integer updateuser(@RequestBody User user) {
+        System.out.println(user);
         return userService.updateUser(user);
     }
+//    @RequestMapping(value = "updateState/{uid}/{state}", method = RequestMethod.POST)
+//    public Integer update(@PathVariable("state") Integer state, @PathVariable("uid") Integer uid) {
+//        System.out.println("修改用户状态");
+//        System.out.println(state + "" + uid);
+//        return userService.updateState(state, uid);
+//    }
 
-    @RequestMapping(value = "deleteUser/{uid}", method = RequestMethod.POST)
-    public Integer deleteUser(@RequestBody @PathVariable("uid") Integer uid) {
-        return userService.deleteUser(uid);
-    }
 
-    @RequestMapping(value = "updateState/{uid}/{state}", method = RequestMethod.POST)
-    public Integer update(@PathVariable("state") Integer state, @PathVariable("uid") Integer uid) {
-        System.out.println("修改用户状态");
-        System.out.println(state + "" + uid);
-        return userService.updateState(state, uid);
-    }
+    //菜谱
     @Resource
     CookBookServiceImpl cookBookService;
     @RequestMapping("findCookBook")

@@ -3,6 +3,7 @@ package com.aaa.entity;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class User {
@@ -16,4 +17,6 @@ public class User {
    private Date usertime;
    private Date bantime;
    private Integer state;
+   private CookBook cookBook;
+   private CookUser cookUser;
 }
