@@ -31,7 +31,7 @@
 			 left join cookuser cu on cu.ucuid = u.uid
        left join cookbook c on c.cid = cu.cuid
     </select>
-    <update id="update">
-        update state set state=#{state} where uid=#{uid}
+    <update id="updateUser">
+        update user set bantime = now(),state=#{state} where uid=#{uid}
     </update>
 </mapper>

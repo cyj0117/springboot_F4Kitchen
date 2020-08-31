@@ -1,5 +1,6 @@
 package com.aaa.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.util.Date;
@@ -10,6 +11,8 @@ public class CookBook {
     private Integer cid;
     private String cname;
     private String picture;
-    private Date uploatime;
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date uploadtime;
     private Integer cstate;
+
 }

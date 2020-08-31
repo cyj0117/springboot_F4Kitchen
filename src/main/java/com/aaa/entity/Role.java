@@ -1,5 +1,6 @@
 package com.aaa.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.util.Date;
@@ -19,7 +20,7 @@ public class Role implements Serializable {
     private String rolecode;
 
     private Integer states;
-
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createtime;
 
 }

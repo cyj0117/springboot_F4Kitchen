@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.dao.ReportDao">
+    <resultMap id="ReportMapper" type="com.aaa.entity.Report">
+        <id column="rid" property="rid"></id>
+        <result column="creid" property="creid"></result>
+        <result column="ureid" property="ureid"></result>
+        <result column="reportid" property="reportid"></result>
+        <result column="retime" property="retime"></result>
+        <result column="reason" property="reason"></result>
+        <result column="areportid" property="areportid"></result>
+        <result column="answertime" property="answertime"></result>
+        <result column="creportid" property="creportid"></result>
+        <association property="answer" javaType="com.aaa.entity.Answer">
+            <id column="aid" property="aid"></id>
+            <result property="answer" column="answer"></result>
+        </association>
+
+        <association property="user" javaType="com.aaa.entity.User">
+            <id column="uid" property="uid"></id>
+            <result property="uname" column="uname"></result>
+        </association>
+
+        <association property="users" javaType="com.aaa.entity.User">
+            <id column="uid" property="uid"></id>
+            <result column="unames" property="uname"></result>
+        </association>
+
+        <association property="cookBook" javaType="com.aaa.entity.CookBook">
+            <id column="cid" property="cid"></id>
+            <result property="cname" column="cname"></result>
+        </association>
+    </resultMap>
+    <select id="Show"  resultMap="ReportMapper">
+
+select report.rid,cookbook.cname,`user`.uname,users.uname as 'unames',report.retime,report.reason,answer.answer,report.answertime,report.creportid from report
+LEFT JOIN answer on report.areportid = answer.aid
+LEFT JOIN `user` as users on report.reportid = users.uid
+LEFT JOIN `user` on report.ureid = `user`.uid
+LEFT JOIN cookbook on report.creid = cookbook.cid
+    </select>
+</mapper>
+
+
+

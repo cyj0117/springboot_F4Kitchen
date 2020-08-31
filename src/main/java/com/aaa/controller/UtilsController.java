@@ -1,10 +1,7 @@
 package com.aaa.controller;
 import com.aaa.entity.*;
 import com.aaa.service.*;
-import com.aaa.service.impl.AccountService;
-import com.aaa.service.impl.CookBookServiceImpl;
-import com.aaa.service.impl.TypeServiceImpl;
-import com.aaa.service.impl.UserServiceImpl;
+import com.aaa.service.impl.*;
 import com.aaa.until.JwtUtils;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -161,15 +158,7 @@ public class UtilsController {
         }
     }
 
-//    @RequestMapping("deleteType")
-//    public Object delete_type(Integer tid) {
-//        Integer del = typeService.delete(tid);
-//        if (del == 1) {
-//            return del;
-//        } else {
-//            return 0;
-//        }
-//    }
+
     @RequestMapping(value = "deleteType/{tid}",method = RequestMethod.GET )
     public Integer delete_type(@PathVariable("tid") Integer tid)
     {
@@ -185,38 +174,19 @@ public class UtilsController {
     private List<User> findAll() {
         return userService.findAll();
     }
-
-
-//   @RequestMapping("updateUser")
-//    public Object update(@RequestBody User user) {
-//        Integer update = userService.updateUser(user);
-//        if (update == 1) {
-//            return update;
-//        } else {
-//            return 0;
-//        }
-//    }
     @RequestMapping(value = "updateUser", method = RequestMethod.POST)
     public Integer updateuser(@RequestBody User user) {
         System.out.println(user);
         return userService.updateUser(user);
     }
-//    @RequestMapping(value = "updateState/{uid}/{state}", method = RequestMethod.POST)
-//    public Integer update(@PathVariable("state") Integer state, @PathVariable("uid") Integer uid) {
-//        System.out.println("修改用户状态");
-//        System.out.println(state + "" + uid);
-//        return userService.updateState(state, uid);
-//    }
-
-
-    //菜谱
+    //菜谱管理
     @Resource
     CookBookServiceImpl cookBookService;
     @RequestMapping("findCookBook")
     public List<CookBook> listAll(){
         return cookBookService.listAll();
     }
-
+    //社区管理
     @Resource
     ShareService shareService;
 
@@ -229,6 +199,14 @@ public class UtilsController {
     public Integer delShare(@PathVariable("sid") Integer sid)
     {
         return shareService.delShare(sid);
+    }
+
+    //举报管理
+    @Resource
+    ReportServiceImpl reportService;
+    @RequestMapping("FindReport")
+    public List<Report> show(){
+        return reportService.Show();
     }
 
 

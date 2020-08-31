@@ -10,12 +10,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class Test {
 
     public static void main(String[] args) {
-        String pass = "admin";
+        String pass = "123";
         BCryptPasswordEncoder bcryptPasswordEncoder = new BCryptPasswordEncoder();
         String hashPass = bcryptPasswordEncoder.encode(pass);
         System.out.println(hashPass);
 
-        boolean flag = bcryptPasswordEncoder.matches("admin",hashPass);
+        boolean flag = bcryptPasswordEncoder.matches("123",hashPass);
         System.out.println(flag);
     }
 

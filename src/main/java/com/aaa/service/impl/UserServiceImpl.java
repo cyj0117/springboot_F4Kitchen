@@ -17,10 +17,7 @@ public class UserServiceImpl implements UserDao {
         return userDao.findAll();
     }
 
-    @Override
-    public Integer updateState( Integer state,Integer uid) {
-        return userDao.updateState(state,uid);
-    }
+
 
     @Override
     public Integer addUser(User user) {

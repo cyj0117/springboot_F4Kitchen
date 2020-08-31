@@ -1,5 +1,6 @@
 package com.aaa.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.util.Date;
@@ -14,7 +15,9 @@ public class User {
    private String gender;
    private String phone;
    private String money;
+   @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss")
    private Date usertime;
+   @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss")
    private Date bantime;
    private Integer state;
    private CookBook cookBook;
