@@ -22,4 +22,10 @@ public class ShareServiceImpl implements ShareService {
     public Integer delShare(Integer sid){
         return shareDao.delShare(sid);
     }
+
+    @Override
+    public Integer addShare(Share share) {
+        return shareDao.addShare(share);
+    }
+
 }

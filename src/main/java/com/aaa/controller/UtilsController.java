@@ -3,12 +3,17 @@ import com.aaa.entity.*;
 import com.aaa.service.*;
 import com.aaa.service.impl.*;
 import com.aaa.until.JwtUtils;
+import com.aaa.until.UUIDUtils;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -236,7 +241,49 @@ public class UtilsController {
     }
 
 
+    /**
+     * 上传图片
+     * @param file
+     * @return
+     * @throws Exception
+     */
+    @PostMapping("upload")
+    @ResponseBody
+    public Result upload(MultipartFile file) throws Exception {
+        Result result = new Result();
+        String upload="";
+        if (null!=file){
+            String contentType = file.getContentType();
+            if (contentType.equals("image/png")||contentType.equals("image/jpeg")||contentType.equals("image/jpg")) {
 
 
+                try {
+                    String name = UUIDUtils.ImgName();
+
+                    upload = AliOSS.upload(name, file);
+
+                } catch (Exception e) {
+                    return ResultUtil.error(ResultCode.ERROR, "文件上传失败");
+
+                }
+            }else {
+                return ResultUtil.error(ResultCode.ERROR, "上传文件类型请选择图片格式");
+            }
+            //   System.out.println(upload);
+            Map<String,Object>map=new HashMap<>();
+            map.put("msg","上传成功");
+            map.put("head",upload);
+            return ResultUtil.success(ResultCode.SUCCESS,map);
+        }
+
+        return ResultUtil.error(ResultCode.ERROR, "文件上传失败");
+
+    }
+
+
+    @RequestMapping(value = "addShare", method = RequestMethod.POST)
+    public Integer addShare(@RequestBody Share share) {
+        return shareService.addShare(share);
+    }
 
 }

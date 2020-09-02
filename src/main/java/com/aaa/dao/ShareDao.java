@@ -8,4 +8,6 @@ public interface ShareDao {
     List<Share> listShare();
 
     Integer delShare(Integer sid);
+
+    Integer addShare(Share share);
 }

@@ -24,4 +24,8 @@
         delete from share where sid = #{sid}
     </delete>
 
+    <insert id="addShare">
+        insert into share value(null,#{content},#{picture},now(),#{ushareid})
+    </insert>
+
 </mapper>
