@@ -6,4 +6,7 @@
     <select id="listAll" resultType="com.aaa.entity.CookBook">
         select * from cookbook
     </select>
+    <delete id="delete">
+        delete from cookbook where cid = #{cid}
+    </delete>
 </mapper>

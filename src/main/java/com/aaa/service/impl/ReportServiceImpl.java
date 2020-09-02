@@ -16,4 +16,10 @@ public class ReportServiceImpl implements ReportDao {
     public List<Report> Show() {
         return reportDao.Show();
     }
+
+    @Override
+    public Integer updateReport(Report report) {
+        return reportDao.updateReport(report);
+    }
+
 }

@@ -24,5 +24,4 @@ public class Report {
 
     private CookBook cookBook;
 
-    private  User users;
 }

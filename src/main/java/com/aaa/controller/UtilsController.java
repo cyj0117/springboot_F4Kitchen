@@ -186,6 +186,11 @@ public class UtilsController {
     public List<CookBook> listAll(){
         return cookBookService.listAll();
     }
+    @RequestMapping(value = "deleteCookBook/{cid}",method = RequestMethod.GET )
+    public Integer deleteCookBook(@PathVariable("cid") Integer cid)
+    {
+        return cookBookService.delete(cid);
+    }
     //社区管理
     @Resource
     ShareService shareService;
@@ -208,6 +213,28 @@ public class UtilsController {
     public List<Report> show(){
         return reportService.Show();
     }
+    @RequestMapping("updateReport")
+    public int updateReport(@RequestBody Report report) {
+        System.out.println(report);
+        if (report.getAnswer().getAnswer().equals("举报成功") )
+        {
+            report.setAreportid(2);
+        }else if (report.getAnswer().getAnswer().equals("举报失败") )
+        {
+            report.setAreportid(3);
+        }else
+        {
+            report.setAreportid(1);
+        }
+        System.out.println(report);
+        Integer update = reportService.updateReport(report);
+        if (update == 1) {
+            return update;
+        } else {
+            return 0;
+        }
+    }
+
 
 
 

@@ -21,10 +21,6 @@
             <result property="uname" column="uname"></result>
         </association>
 
-        <association property="users" javaType="com.aaa.entity.User">
-            <id column="uid" property="uid"></id>
-            <result column="unames" property="uname"></result>
-        </association>
 
         <association property="cookBook" javaType="com.aaa.entity.CookBook">
             <id column="cid" property="cid"></id>
@@ -32,13 +28,14 @@
         </association>
     </resultMap>
     <select id="Show"  resultMap="ReportMapper">
-
-select report.rid,cookbook.cname,`user`.uname,users.uname as 'unames',report.retime,report.reason,answer.answer,report.answertime,report.creportid from report
+select report.rid,report.reason,cookbook.cname,`user`.uname,report.retime,report.reason,answer.answer,report.answertime,report.creportid from report
 LEFT JOIN answer on report.areportid = answer.aid
-LEFT JOIN `user` as users on report.reportid = users.uid
-LEFT JOIN `user` on report.ureid = `user`.uid
-LEFT JOIN cookbook on report.creid = cookbook.cid
+LEFT JOIN `user` on report.reportid = `user`.uid
+LEFT JOIN cookbook on report.creid = cookbook.cid where report.creid is not null
     </select>
+    <update id="updateReport">
+          UPDATE report set areportid = #{areportid},answertime = now() where rid = #{rid}
+    </update>
 </mapper>
 
 

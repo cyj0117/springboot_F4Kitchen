@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface ReportDao {
     List<Report>Show();
+    Integer updateReport(Report report);
 }

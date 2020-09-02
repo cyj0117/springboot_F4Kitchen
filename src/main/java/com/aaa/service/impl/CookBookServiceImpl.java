@@ -16,4 +16,9 @@ public class CookBookServiceImpl implements CookBookDao {
     public List<CookBook> listAll() {
         return cookBookDao.listAll();
     }
+
+    @Override
+    public Integer delete(Integer cid) {
+        return cookBookDao.delete(cid);
+    }
 }
