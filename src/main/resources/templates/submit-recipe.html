@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>上传菜谱</title>
+	<!-- viewport meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- helpers -->
+	<link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+	<!-- fontawesome css -->
+	<link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
+	<!-- strock gap icons -->
+	<link rel="stylesheet" href="plugins/Stroke-Gap-Icons-Webfont/style.css">
+	<!-- revolution slider css -->
+	<link rel="stylesheet" href="plugins/revolution/css/settings.css">
+	<link rel="stylesheet" href="plugins/revolution/css/layers.css">
+	<link rel="stylesheet" href="plugins/revolution/css/navigation.css">
+	<!-- flaticon css -->
+	<link rel="stylesheet" href="plugins/flaticon/flaticon.css">
+	<!-- jQuery ui css -->
+	<link href="plugins/jquery-ui-1.11.4/jquery-ui.css" rel="stylesheet">
+	<!-- owl carousel css -->
+	<link rel="stylesheet" href="plugins/owl.carousel-2/assets/owl.carousel.css">
+	<link rel="stylesheet" href="plugins/owl.carousel-2/assets/owl.theme.default.min.css">
+	<!-- animate css -->
+	<link rel="stylesheet" href="plugins/animate.min.css">
+	<!-- fancybox -->
+	<link rel="stylesheet" href="plugins/fancyapps-fancyBox/source/jquery.fancybox.css">
+	<!-- bxslider -->
+	<link rel="stylesheet" href="plugins/bx-slider/jquery.bxslider.css">
+
+	<link href="plugins/plupload-2.1.8/js/jquery.ui.plupload/css/jquery.ui.plupload.css" rel="stylesheet">
+
+	<!-- master stylesheet -->
+	<link rel="stylesheet" href="css/style.css">
+	<!-- responsive stylesheet -->
+	<link rel="stylesheet" href="css/responsive.css">
+	
+	
+</head>
+<body>
+
+<header id="header" class="stricky">
+	<div class="thm-container clearfix">
+		<div class="logo">
+			<a href="index.html">
+				<img src="images/mainlogo.png" alt="">
+			</a>
+		</div>
+		<div class="nav-holder pull-right">
+			<div class="nav-header">
+				<button><i class="fa fa-bars"></i></button>
+			</div>
+			<div class="nav-footer">
+				<ul class="nav">
+					<li><a href="index.html"><i class="flaticon-food"></i>主页</a></li>		
+					<li class="has-submenu"><a href="recipe-v1.html"><i class="flaticon-food-2"></i>分类</a></li>
+					<li><a href="browse-recipes.html"><i class="flaticon-food-4"></i>推荐食谱</a></li>
+					<li class="has-submenu"><a href="blog-right.html"><i class="flaticon-food-3"></i>博客</a></li>
+					<li class="has-submenu"><a href="login.html"><i class="flaticon-tool"></i>登录</a></li>
+					<li><a href="register.html"><i class="flaticon-food-1"></i>注册</a></li>
+					<li><a href="user-account.html"><i class="flaticon-food"></i>个人中心</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</header>
+<section class="inner-banner">
+	<div class="thm-container">
+		<div class="box clearfix">
+			<h2 class="pull-left">上传菜谱</h2>
+			<ul class="breadcumb pull-right">
+				<li><a href="index.html"><i class="fa fa-home"></i>主页</a></li>
+				<li><span>上传菜谱</span></li>
+			</ul>
+		</div>
+	</div>
+</section>
+
+
+
+<div  class="content">
+	<div class="pt30 w960 clearfix">
+		<div class="bpannel p15">
+		<form target="_self" id="create_receipt" action="/api/doSaveShipuFeature.html" method="post"  class="cmxform">
+			<div class="table-title clearfix font20 cg2">
+                <div class="fl w410">基本信息</div>
+            </div>
+			<div class="w670">
+				
+				<dl class="mt30">
+                    <dt class="cg1 font16">标题<span class="cod ml10 font12">必填</span></dt>
+                    <dd class="mt12"><input type="text" class="validate[custom[shipuname],maxSize[24],ajax[ajaxFilter]] ui-ipt-long "  name="name" id="name" style="font-size:14px" value="" tabindex="1"/></dd>
+                </dl>
+                
+                <dl class="mt30">
+                    <dt class="cg1 font16">材料<span class="cod ml10 font12">必填</span></dt>
+                    <dd class="">
+                        <ul class="clearfix material-list">
+                        
+                        	  <li class="cail">
+                                <input type="text" class="ui-ipt-short fl" placeholder="如：青菜"/>
+                                <input class="ui-ipt-tiny ml10 fl" type="text" placeholder="如：250克"/>
+                            </li>
+                             <li class="cail">
+                                <input type="text" class="ui-ipt-short fl" />
+                                <input class="ui-ipt-tiny ml10 fl" type="text" />
+                            </li>
+                            
+                            
+                            <input name="material" id="material" type="hidden" class="validate[custom[material]]"/>
+                            <li>
+                                <a href="javascript:add_cailiao();" class="btn-block btn-orange"><i class="icon-plus"></i>继续添加</a>
+                            </li>
+                             
+                        </ul>
+                    </dd>
+                </dl>
+                <dl class="mt30">
+                    <dt class="cg1 font16">步骤<span class="cod ml10 font12">必填</span> <span class=" ml10 font12">最后一步图片做封面</span></dt>
+                    
+					<dd class="mt12" id="picupload">
+						<ul id="queue" class='steps'>
+						
+							<li id='picfile'>
+                                <a class="pa" href="###">
+                                    <i class="icon-add"></i>
+                                    <input type="file" accept=".jpg,.gif,.png" name="files[]" multiple="multiple"	class="file-ipt" title="上传">
+                                </a>
+                            </li>
+						</ul>
+						<input name="list1SortOrder" id="list1SortOrder" type="hidden" />
+						<input name="stepDes" id="stepDes" type="hidden" />
+					</dd>
+			
+					<dt class="fr cg1 font16">
+						<span class=" ml10 font12">总字数:<span class="wordsNum">0</span></span>
+                    </dt>
+                    
+                </dl>
+               
+                
+                <dl class="mt30">
+                	 <dt class="cg1 font16">验证<span class="cod ml10 font12">发布必填</span></dt>
+                	<div id="your-dom-id" class="nc-container mt20"></div> 
+                	<input type="hidden"  name="token" id="token"/>
+                    <input type="hidden"  name="sessionid" id="sessionid"/>
+                    <input type="hidden"  name="sig" id="sig"/>
+                    <input type="hidden"  name="scene" id="scene"/>
+                    <input type="hidden"  name="appkey" id="appkey"/>
+                    
+                    <input type="hidden"  name="check" id="check"/>
+                </dl>
+                </div>
+	
+			<div class="table-title clearfix cg2 mt30">
+                <div class="fl w410 font20">高级选项</div> 
+                <a class="fr font16 cb retract" id="more_options" href="" tabindex="-1">展开<i class="icon-angle-double-down cg2"></i></a>
+            	<a  id="less_options" href="" tabindex="-1" class="fr font16 cb retract hide">收起<i class="icon-angle-double-up cg2"></i></a>
+            </div>
+			<div class="w670">
+                <dl class="mt30 hide options">
+                    <dt class="cg1 font16">描述</dt>
+                    <dd class="mt12">
+                    <textarea type="text" class="ui-text" placeholder="说说这道菜背后的小故事吧！" name="description" id="description" tabindex="5" ></textarea>
+                    </dd>
+                </dl>
+                <dl class="mt30 hide options">
+                    <dt class="cg1 font16">诀窍</dt>
+                    <dd class="mt12">
+                    <textarea type="text" class="ui-text" placeholder="有小诀窍赶快分享吧！" name="tip" id="edit_tips" value="" tabindex="6"></textarea>
+                    </dd>
+                </dl>
+                <dl class="mt30 hide options">
+                    <dt class="cg1 font16">分类</dt>
+                    <dd class="mt12">
+                    
+                    <input class="ui-ipt-long" id="tags" type="text" value="" tabindex="7" name="tags"/></dd>
+                    <dd class="mt12" id="set_lables">
+                    	</dd>
+                    
+                </dl>
+                <dl class="mt30 hide options">
+                    <dt class="cg1 font16">转载自</dt>
+                    <dd class="mt12">
+                    <input id="source" type="text" tabindex="8" name="source" class="validate[custom[script]] ui-ipt-long" value="" />
+                    </dd>
+                </dl>
+                <dl class="mt60b30">
+                    <a href="#" class="btn-small btn-grey" id="cancel" tabindex="21">关闭</a>
+                    <span class="fr">
+                    	<a class="btn-small btn-orange" id="entering" href="#" tabindex="22">存为草稿</a>
+                       			<a class="btn-small btn-orange ml22" href="#" id="save" tabindex="20">直接发布</a>
+							</span>
+                </dl>
+            </div>
+            
+			<input type="hidden" name="shipustatus" id="shipustatus" value=""/>
+			<input type="hidden" name="shipuid" id="shipuid" value=""/>
+			<input type="hidden" name="categories" id="categories"  value=""/>
+            
+            </form>
+         </div>
+	 </div>
+   </div>
+<input id="userid" type="hidden" value="1581056"/><script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+
+  ga('create', 'UA-11253628-2', 'xinshipu.com');
+
+
+	ga('set', 'dimension1', 'test');
+
+	ga('send', 'pageview');
+</script>
+
+
+
+<section class="bottom-bar text-center">
+	<div class="thm-container clearfix">
+		<p>Copyright &copy; Recipex 2016. All rights reserved. <span>Created by DesignArc</span></p>
+	</div>
+</section>
+
+
+<!-- JS -->
+<!-- jQuery js -->
+<script src="plugins/jquery/jquery-1.11.3.min.js"></script>
+<!-- bootstrap js -->
+<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+<!-- jQuery ui js -->
+<script src="plugins/jquery-ui-1.11.4/jquery-ui.js"></script>
+<!-- owl carousel js -->
+<script src="plugins/owl.carousel-2/owl.carousel.min.js"></script>
+<!-- jQuery appear -->
+<script src="plugins/jquery-appear/jquery.appear.js"></script>
+<!-- jQuery countTo -->
+<script src="plugins/jquery-countTo/jquery.countTo.js"></script>
+<!-- jQuery validation -->
+<script src="plugins/jquery-validation/dist/jquery.validate.min.js"></script>
+<!-- gmap.js helper -->
+<!--<script src="http://maps.google.com/maps/api/js"></script>-->
+<!-- gmap.js -->
+<!--<script src="plugins/gmap.js"></script>-->
+<!-- mixit up -->
+<script src="plugins/jquery.mixitup.min.js"></script>
+<!-- bxslider js -->
+<script src="plugins/bx-slider/jquery.bxslider.min.js"></script>
+
+<!-- revolution slider js -->
+<script src="plugins/revolution/js/jquery.themepunch.tools.min.js"></script>
+<script src="plugins/revolution/js/jquery.themepunch.revolution.min.js"></script>
+<script src="plugins/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+<script src="plugins/revolution/js/extensions/revolution.extension.carousel.min.js"></script>
+<script src="plugins/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+<script src="plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+<script src="plugins/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+<script src="plugins/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+<script src="plugins/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+<script src="plugins/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+<script src="plugins/revolution/js/extensions/revolution.extension.video.min.js"></script>
+
+<!-- fancy box -->
+<script src="plugins/fancyapps-fancyBox/source/jquery.fancybox.pack.js"></script>
+<!-- type script -->
+<script src="plugins/typed.js-master/dist/typed.min.js"></script>
+
+
+
+
+
+<script src="plugins/plupload-2.1.8/js/plupload.full.min.js"></script>
+<script src="plugins/plupload-2.1.8/js/jquery.ui.plupload/jquery.ui.plupload.min.js"></script>
+
+
+<!-- theme custom js  -->
+<script src="js/main.js"></script>
+
+</body>
+</html>
