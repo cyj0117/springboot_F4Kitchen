@@ -34,4 +34,7 @@
     <update id="updateUser">
         update user set bantime = now(),state=#{state} where uid=#{uid}
     </update>
+    <select id="Login" resultMap="UserMapper">
+        select * from user where account = #{account} and password = #{password}
+    </select>
 </mapper>

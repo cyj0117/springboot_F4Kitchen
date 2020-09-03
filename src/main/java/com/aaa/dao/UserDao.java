@@ -11,4 +11,6 @@ public interface UserDao {
     Integer updateUser(User user);
     Integer deleteUser(Integer uid);
 
+    User login(String account,String password);
+
 }

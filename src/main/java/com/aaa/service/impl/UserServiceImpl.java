@@ -33,4 +33,9 @@ public class UserServiceImpl implements UserDao {
     public Integer deleteUser(Integer uid) {
         return userDao.deleteUser(uid);
     }
+
+    @Override
+    public User login(String account, String password) {
+        return userDao.login(account, password);
+    }
 }

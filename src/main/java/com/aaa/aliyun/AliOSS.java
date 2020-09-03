@@ -50,7 +50,7 @@ public  class AliOSS {
             meta.setContentType("image/jpg");
             PutObjectResult putObjectResult = ossClient.putObject(bucketName, fileKey, new File(path),meta);
             System.out.println("Object：" + fileKey + "存入OSS成功。");
-            url="https://appmusics.oss-cn-beijing.aliyuncs.com/"+ FactUtil.toUtf8String(fileKey);
+            url="https://cyj0117.oss-cn-beijing.aliyuncs.com/"+ FactUtil.toUtf8String(fileKey);
             System.out.println(putObjectResult);
         }catch (Exception e){
 
@@ -106,7 +106,7 @@ public  class AliOSS {
             meta.setContentType("image/jpg");
             PutObjectResult putObjectResult = ossClient.putObject(bucketName, fileKey, file.getInputStream(),meta);
             System.out.println("Object：" + fileKey + "存入OSS成功。");
-            url="https://appmusics.oss-cn-beijing.aliyuncs.com/"+ FactUtil.toUtf8String(fileKey);
+            url="https://cyj0117.oss-cn-beijing.aliyuncs.com/"+ FactUtil.toUtf8String(fileKey);
             //System.out.println(putObjectResult);
         }catch (Exception e){
 
@@ -119,9 +119,7 @@ public  class AliOSS {
 
 
     public static void main(String[] args) throws IOException {
-        String add = AliOSS.Add("1", "D:\\360MoveData\\Users\\Administrator\\Desktop\\3.jpg");
+        String add = AliOSS.Add("1", "C:/Users/1/Desktop/F4Kitchen/image/13-1.jpg");
         System.out.println(add);
-        //System.out.println(AliOSS.remove("童话镇"));
-        //System.out.println(AliOSS.install("童话镇"));
     }
 }

@@ -1,4 +1,8 @@
 package com.aaa.controller;
+import com.aaa.aliyun.AliOSS;
+import com.aaa.code.Result;
+import com.aaa.code.ResultCode;
+import com.aaa.code.ResultUtil;
 import com.aaa.entity.*;
 import com.aaa.service.*;
 import com.aaa.service.impl.*;
