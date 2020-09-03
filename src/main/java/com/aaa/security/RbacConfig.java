@@ -12,9 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 
-/**
- * 田常乐
- */
+
 @Component("rbacConfig")
 public class RbacConfig {
 

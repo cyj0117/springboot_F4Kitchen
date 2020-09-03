@@ -11,9 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 
-/**
- * 田常乐
- */
+
 @Component
 public class AuthenticationErrorHandle implements AuthenticationEntryPoint {
 

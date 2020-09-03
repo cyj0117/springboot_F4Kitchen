@@ -24,9 +24,7 @@ public class LogoutHandler implements LogoutSuccessHandler {
     private ObjectMapper objectMapper;
 
 
-    /**
-     * 田常乐
-     */
+
     @Override
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         Map<String,String> map = new LinkedHashMap<>();

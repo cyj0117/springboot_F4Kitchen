@@ -18,9 +18,7 @@ import java.util.Collection;
 import java.util.HashMap;
 
 
-/**
- * 田常乐
- */
+
 @Component
 public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 
