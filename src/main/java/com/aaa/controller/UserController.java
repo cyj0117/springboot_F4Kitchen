@@ -14,9 +14,14 @@ public class UserController {
     UserServiceImpl Impl;
     @RequestMapping("login")
     public String Login(String account, String password, Model model){
-        User list = Impl.login(account, password);
-        model.addAttribute("list",list);
-        System.out.println(list);
-        return "login";
+
+        if(account!=null && password!= null){
+            User list = Impl.login(account, password);
+            model.addAttribute("list",list);
+            System.out.println(list+"登录人");
+            return "index";
+        }else{
+            return "login";
+        }
     }
 }
