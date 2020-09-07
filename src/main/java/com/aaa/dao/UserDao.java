@@ -15,6 +15,6 @@ public interface UserDao {
     Integer updateUser(User user);
     Integer deleteUser(Integer uid);
     @Select("select * from user where account = #{param1} and password = #{param2}")
-    User login( String account,String password);
+    List<User> login( String account,String password);
 
 }

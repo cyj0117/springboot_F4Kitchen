@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserDao {
     }
 
     @Override
-    public User login(String account, String password) {
+    public List<User> login(String account, String password) {
         return userDao.login(account, password);
     }
 }
