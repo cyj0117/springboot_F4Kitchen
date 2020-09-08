@@ -44,15 +44,10 @@ public class UserController {
     StepServiceImpl stepService;
     //跳转步骤
     @RequestMapping("single-recipe")
-    public String single_recipe(Model model){
-        List<Step> list = stepService.findStep();
+    public String single_recipe(Model model,Integer cid){
+        List<Step> list = stepService.findStep(cid);
         model.addAttribute("steplist",list);
         return "single-recipe";
-    }
-    //跳转分类
-    @RequestMapping("recipe")
-    public String recipe(){
-        return "recipe-v1";
     }
     //跳转推荐
     @RequestMapping("browse-recipes")
@@ -93,5 +88,12 @@ public class UserController {
         List<CookBook> list = cookBookService.findCookBook();
         model.addAttribute("cookbooklist",list);
         return "index";
+    }
+    //跳转分类
+    @RequestMapping("recipe")
+    public String recipe(Model model){
+        List<CookBook> list = cookBookService.findCookBook();
+        model.addAttribute("cklist",list);
+        return "recipe-v1";
     }
 }

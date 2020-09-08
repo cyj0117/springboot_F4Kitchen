@@ -16,7 +16,7 @@ public class StepServiceImpl implements StepDao {
     StepDao stepDao;
 
     @Override
-    public List<Step> findStep() {
-        return stepDao.findStep();
+    public List<Step> findStep(Integer cid) {
+        return stepDao.findStep(cid);
     }
 }

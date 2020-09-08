@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<title>分类</title>
@@ -95,20 +95,20 @@
 						<div class="img-caption">
 							<div class="box-holder">
 								<ul>
-									<li><a href="/user/single-recipe"><i class="icon icon-Goto"></i></a></li>
+									<li><a href="/user/single-recipe?cid=1"><i class="icon icon-Goto"></i></a></li>
 								</ul>
 							</div>
 						</div>
 					</div>
 					<div class="content-box">
-						<h3>菜名</h3>
-						<span>作者:</span>XXX
+						<h3><input type="text" disabled style="border: 0px" name="cname" th:value="${cklist[0].cname}"></h3>
+						<span>作者:<input type="text" disabled style="border: 0px" name="uname" th:value="${cklist[0].user.uname}"></span>
 						<div class="inner-meta clearfix">
 							<div class="pull-left time">
 								<i class="icon icon-Timer"></i>1小时之前
 							</div>
 							<div class="pull-right read-more">
-								<a href="/user/single-recipe">查看详情</a>
+								<a href="/user/single-recipe?cid=1">查看详情</a>
 							</div>
 						</div>
 					</div>
@@ -121,20 +121,20 @@
 						<div class="img-caption">
 							<div class="box-holder">
 								<ul>
-									<li><a href="/user/single-recipe"><i class="icon icon-Goto"></i></a></li>
+									<li><a href="/user/single-recipe?cid=2"><i class="icon icon-Goto"></i></a></li>
 								</ul>
 							</div>
 						</div>
 					</div>
 					<div class="content-box">
-						<h3>菜名</h3>
-						<span>作者:</span>XXX
+						<h3><input type="text" disabled style="border: 0px" name="cname" th:value="${cklist[1].cname}"></h3>
+						<span>作者:<input type="text" disabled style="border: 0px" name="uname" th:value="${cklist[1].user.uname}"></span>
 						<div class="inner-meta clearfix">
 							<div class="pull-left time">
 								<i class="icon icon-Timer"></i>1小时之前
 							</div>
 							<div class="pull-right read-more">
-								<a href="/user/single-recipe">查看详情</a>
+								<a href="/user/single-recipe?cid=2">查看详情</a>
 							</div>
 						</div>
 					</div>
@@ -147,20 +147,20 @@
 						<div class="img-caption">
 							<div class="box-holder">
 								<ul>
-									<li><a href="/user/single-recipe"><i class="icon icon-Goto"></i></a></li>
+									<li><a href="/user/single-recipe?cid=4"><i class="icon icon-Goto"></i></a></li>
 								</ul>
 							</div>
 						</div>
 					</div>
 					<div class="content-box">
-						<h3>菜名</h3>
-						<span>作者:</span>XXX
+						<h3><input type="text" disabled style="border: 0px" name="cname" th:value="${cklist[3].cname}"></h3>
+						<span>作者:<input type="text" disabled style="border: 0px" name="uname" th:value="${cklist[3].user.uname}"></span>
 						<div class="inner-meta clearfix">
 							<div class="pull-left time">
 								<i class="icon icon-Timer"></i>1小时之前
 							</div>
 							<div class="pull-right read-more">
-								<a href="/user/single-recipe">查看详情</a>
+								<a href="/user/single-recipe?cid=4">查看详情</a>
 							</div>
 						</div>
 					</div>
