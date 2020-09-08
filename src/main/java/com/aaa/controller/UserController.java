@@ -1,6 +1,10 @@
 package com.aaa.controller;
 
+import com.aaa.entity.CookBook;
+import com.aaa.entity.Step;
 import com.aaa.entity.User;
+import com.aaa.service.impl.CookBookServiceImpl;
+import com.aaa.service.impl.StepServiceImpl;
 import com.aaa.service.impl.UserServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,17 +30,23 @@ public class UserController {
     @ResponseBody
     public List<User> loginUser(HttpSession session,String account,String password){
         List<User> users = Impl.login(account, password);
+        session.setAttribute("list",users);
         System.out.println("登录:"+users);
         return users;
     }
-    //进入主界面
-    @RequestMapping("main")
-    public String main(){
-        return "index";
-    }
+//    //进入主界面
+//    @RequestMapping("main")
+//    public String main(){
+//        return "index";
+//    }
+
+    @Resource
+    StepServiceImpl stepService;
     //跳转步骤
     @RequestMapping("single-recipe")
-    public String single_recipe(){
+    public String single_recipe(Model model){
+        List<Step> list = stepService.findStep();
+        model.addAttribute("steplist",list);
         return "single-recipe";
     }
     //跳转分类
@@ -73,5 +83,15 @@ public class UserController {
     @RequestMapping("submit-recipe")
     public String submit_recipe(){
         return "submit-recipe";
+    }
+
+    @Resource
+    CookBookServiceImpl cookBookService;
+    //查看菜谱
+    @RequestMapping("main")
+    public String findcookbook(Model model){
+        List<CookBook> list = cookBookService.findCookBook();
+        model.addAttribute("cookbooklist",list);
+        return "index";
     }
 }

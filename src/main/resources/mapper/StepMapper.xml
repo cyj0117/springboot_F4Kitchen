@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.dao.StepDao">
+    <resultMap id="StepMapper" type="com.aaa.entity.Step">
+        <id column="sid" property="sid"></id>
+        <result column="step" property="step"></result>
+        <result column="picture" property="picture"></result>
+        <result column="cstepid" property="cstepid"></result>
+
+        <collection property="user" ofType="com.aaa.entity.User">
+            <id column="uid" property="uid"></id>
+            <result property="uname" column="uname"></result>
+        </collection>
+
+        <collection property="cookBook" ofType="com.aaa.entity.CookBook">
+            <id column="cid" property="cid"></id>
+            <result property="cname" column="cname"></result>
+        </collection>
+
+    </resultMap>
+    <select id="findStep" resultMap="StepMapper">
+        select s.*,u.uid,u.uname,c.cid,c.cname from step s
+left join cookbook c on c.cid=s.cstepid
+LEFT JOIN cookuser cu on cu.ccuid = c.cid
+LEFT JOIN user u on u.uid = cu.ucuid
+    </select>
+</mapper>

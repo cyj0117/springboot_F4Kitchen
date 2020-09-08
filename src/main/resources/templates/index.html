@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<title>主页</title>
@@ -96,7 +96,6 @@
 </div>
 </div>
 </section>
-
 <section class="recent-recipes sec-padding">
 	<div class="thm-container">
 		<div class="sec-title">
@@ -115,9 +114,10 @@
 							</div>
 						</div>
 					</div>
+					<span th:each="list:${cookbooklist[0]}">
 					<div class="content-box">
-						<h3>菜名</h3>
-						<span>作者:</span><span>XX</span>
+						<h3><input type="text" disabled style="border: 0px" name="cname" th:value="${list.cname}"></h3>
+						<span>作者:</span><span><input type="text" disabled style="border: 0px" name="cname" th:value="${list.user.uname}"></span>
 						<div class="inner-meta clearfix">
 							<div class="pull-left time">
 								<i class="icon icon-Timer"></i>1小时之前
@@ -127,6 +127,7 @@
 							</div>
 						</div>
 					</div>
+					</span>
 				</div>
 			</div>
 			<div class="col-md-4">
@@ -141,9 +142,10 @@
 							</div>
 						</div>
 					</div>
+					<span th:each="list:${cookbooklist[1]}">
 					<div class="content-box">
-						<h3>菜名</h3>
-						<span>作者:</span>XXX
+						<h3><input type="text" disabled style="border: 0px" name="cname" th:value="${list.cname}"></h3>
+						<span>作者:</span><span><input type="text" disabled style="border: 0px" name="cname" th:value="${list.user.uname}"></span>
 						<div class="inner-meta clearfix">
 							<div class="pull-left time">
 								<i class="icon icon-Timer"></i>1小时之前
@@ -153,6 +155,7 @@
 							</div>
 						</div>
 					</div>
+					</span>
 				</div>
 			</div>
 			<div class="col-md-4">
@@ -167,9 +170,10 @@
 							</div>
 						</div>
 					</div>
+					<span th:each="list:${cookbooklist[2]}">
 					<div class="content-box">
-						<h3>菜名</h3>
-						<span>作者:</span>XXX
+						<h3><input type="text" disabled style="border: 0px" name="cname" th:value="${list.cname}"></h3>
+						<span>作者:</span><span>官方上传</span>
 						<div class="inner-meta clearfix">
 							<div class="pull-left time">
 								<i class="icon icon-Timer"></i>1小时之前
@@ -179,13 +183,13 @@
 							</div>
 						</div>
 					</div>
+					</span>
 				</div>
 			</div>
 			
 		</div>
 	</div>
 </section>
-
 <section class="bottom-bar text-center">
 	<div class="thm-container clearfix">
 		<p>Copyright &copy; Recipex 2016. All rights reserved. <span>Created by DesignArc</span></p>

@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<title>步骤</title>
@@ -74,12 +74,11 @@
 			<h2 class="pull-left">做法步骤</h2>
 			<ul class="breadcumb pull-right">
 				<li><a href="/user/main"><i class="fa fa-home"></i>主页</a></li>
-				<li><span>S做法步骤</span></li>
+				<li><span>做法步骤</span></li>
 			</ul>
 		</div>
 	</div>
 </section>
-
 
 <section class="single-recipe-page-content sec-padding">
 	<div class="thm-container">
@@ -99,7 +98,8 @@
 								<span>1</span>
 							</div>
 							<div class="text-box">
-								<p>步骤</p>
+								<p><!--/*@thymesVar id="step" type="com.aaa.entity.Step"*/-->
+								<input type="text" disabled style="width:500px;border: 0px" name="step" th:value="${steplist[0].step}"></p>
 							</div>
 							<div>
 								<img src="../static/images/browse-recipes/2.jpg" />
@@ -110,7 +110,30 @@
 								<span>2</span>
 							</div>
 							<div class="text-box">
-								<p>步骤</p>
+								<p><!--/*@thymesVar id="step" type="com.aaa.entity.Step"*/-->
+									<input type="text" disabled style="width:500px;border: 0px" name="step" th:value="${steplist[1].step}"></p>
+							</div>
+							<div>
+								<img src="../static/images/browse-recipes/2.jpg" />
+							</div>
+						</li>
+						<li>
+							<div class="count-box">
+								<span>3</span>
+							</div>
+							<div class="text-box">
+								<p><input type="text" disabled style="width:500px;pxborder: 0px" name="step" th:value="${steplist[2].step}"></p>
+							</div>
+							<div>
+								<img src="../static/images/browse-recipes/2.jpg" />
+							</div>
+						</li>
+						<li>
+							<div class="count-box">
+								<span>4</span>
+							</div>
+							<div class="text-box">
+								<p><input type="text" disabled style="width:500px;border: 0px" name="step" th:value="${steplist[3].step}"></p>
 							</div>
 							<div>
 								<img src="../static/images/browse-recipes/2.jpg" />
@@ -125,12 +148,11 @@
 					<div class="title-box">
 						<div class="top-meta clearfix">
 							<div class="pull-left author">
-								<span>作者:</span>XXX
+								<span>作者:<input type="text" disabled style="border: 0px" name="uname" th:value="${steplist[0].user.uname}"></span>
 							</div>
-							
 						</div>
 						<div class="title">
-							<h3>菜名</h3>
+							<h3><input type="text" disabled style="border: 0px" name="cname" th:value="${steplist[0].cookBook.cname}"></h3>
 						</div>
 					</div>
 					<div class="ingredients contact-form">

@@ -3,10 +3,36 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aaa.dao.CookBookDao">
+    <resultMap id="CookMapper" type="com.aaa.entity.CookBook">
+        <id column="cid" property="cid"></id>
+        <result column="cname" property="cname"></result>
+        <result column="picture" property="picture"></result>
+        <result column="uploadtime" property="uploadtime"></result>
+        <result column="state" property="state"></result>
+
+        <collection property="user" ofType="com.aaa.entity.User">
+            <id column="uid" property="uid"></id>
+            <result property="uname" column="uname"></result>
+        </collection>
+
+        <collection property="type" ofType="com.aaa.entity.Type">
+            <id column="tid" property="tid"></id>
+            <result property="tname" column="tname"></result>
+        </collection>
+
+    </resultMap>
     <select id="listAll" resultType="com.aaa.entity.CookBook">
         select * from cookbook
     </select>
     <delete id="delete">
         delete from cookbook where cid = #{cid}
     </delete>
+    <select id="findCookBook" resultMap="CookMapper">
+        select cookbook.*,type.tname,`user`.uname from cookbook
+LEFT JOIN cookhealth on cookhealth.cchid = cookbook.cid
+LEFT JOIN cooktype ON cooktype.cctid = cookbook.cid
+LEFT JOIN type on type.tid = cooktype.tctid
+LEFT JOIN cookuser on cookuser.ccuid = cookbook.cid
+LEFT JOIN `user` on `user`.uid = cookuser.ucuid
+    </select>
 </mapper>
