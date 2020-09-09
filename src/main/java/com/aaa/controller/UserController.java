@@ -46,11 +46,6 @@ public class UserController {
         model.addAttribute("steplist",list);
         return "single-recipe";
     }
-    //跳转推荐
-    @RequestMapping("browse-recipes")
-    public String browse_recipes(){
-        return "browse-recipes";
-    }
     //跳转博客
     @RequestMapping("blog-right")
     public String blog_right(){
@@ -92,5 +87,12 @@ public class UserController {
         List<CookBook> list = cookBookService.findCookBook();
         model.addAttribute("cklist",list);
         return "recipe-v1";
+    }
+    //跳转推荐
+    @RequestMapping("browse-recipes")
+    public String browse_recipes(Model model){
+        List<CookBook> list = cookBookService.findCookBook();
+        model.addAttribute("ckbklist",list);
+        return "browse-recipes";
     }
 }
