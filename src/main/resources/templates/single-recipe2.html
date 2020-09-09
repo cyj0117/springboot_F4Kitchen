@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
-	<title>分类</title>
+	<title>步骤</title>
 	<!-- viewport meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -67,117 +67,205 @@
 		</div>
 	</div>
 </header>
+
 <section class="inner-banner">
 	<div class="thm-container">
 		<div class="box clearfix">
-			<h2 class="pull-left">分类</h2>
+			<h2 class="pull-left">做法步骤</h2>
 			<ul class="breadcumb pull-right">
 				<li><a href="/user/main"><i class="fa fa-home"></i>主页</a></li>
-				<li><span>分类</span></li>
+				<li><span>做法步骤</span></li>
 			</ul>
 		</div>
 	</div>
 </section>
-<section class="recent-recipes fleet-gallery sec-padding recipe-page-one">
+
+<section class="single-recipe-page-content sec-padding">
 	<div class="thm-container">
-		<ul class="gallery-filter text-center">
-			<li class="filter" data-filter="all"><span>全部</span></li>
-			<li class="filter" data-filter=".beverage"><span>川菜</span></li>
-			<li class="filter" data-filter=".dessert"><span>粤菜</span></li>
-			<li class="filter" data-filter=".lunch"><span>湘菜</span></li>
-			<li class="filter" data-filter=".main-dishes"><span>豫菜</span></li>
-		</ul>
-		<div class="row single-fleet-gallery-wrapper">
-			<div class="col-md-4 mix beverage lunch food">
-				<div class="single-recent-recipes img-cap-effect">
-					<div class="img-box">
-						<img th:src="${cklist[0].picture}" alt="">
-						<div class="img-caption">
-							<div class="box-holder">
-								<ul>
-									<li><a href="/user/single-recipe?cid=1"><i class="icon icon-Goto"></i></a></li>
-								</ul>
+		<div class="row">
+			<div class="col-md-7">
+				<div class="item">
+					<img src="https://cyj0117.oss-cn-beijing.aliyuncs.com/2" alt="Awesome Image"/>
+				</div>
+				<div class="sec-title">
+					<h2>步骤</h2>
+				</div>
+				
+				<div class="direction-box">
+					<ul>
+						<li>
+							<div class="count-box">
+								<span>1</span>
 							</div>
+							<div class="text-box">
+								<p><!--/*@thymesVar id="step" type="com.aaa.entity.Step"*/-->
+								<input type="text" disabled style="width:500px;border: 0px" name="step" th:value="${steplist[0].step}"></p>
+							</div>
+							<div>
+								<img th:src="${steplist[0].picture}" />
+							</div>
+						</li>
+						<li>
+							<div class="count-box">
+								<span>2</span>
+							</div>
+							<div class="text-box">
+								<p><!--/*@thymesVar id="step" type="com.aaa.entity.Step"*/-->
+									<input type="text" disabled style="width:500px;border: 0px" name="step" th:value="${steplist[1].step}"></p>
+							</div>
+							<div>
+								<img th:src="${steplist[1].picture}" />
+							</div>
+						</li>
+						<li>
+							<div class="count-box">
+								<span>3</span>
+							</div>
+							<div class="text-box">
+								<p><input type="text" disabled style="width:500px;pxborder: 0px" name="step" th:value="${steplist[2].step}"></p>
+							</div>
+							<div>
+								<img th:src="${steplist[2].picture}" />
+							</div>
+						</li>
+						<li>
+							<div class="count-box">
+								<span>4</span>
+							</div>
+							<div class="text-box">
+								<p><input type="text" disabled style="width:500px;border: 0px" name="step" th:value="${steplist[3].step}"></p>
+							</div>
+							<div>
+								<img th:src="${steplist[3].picture}" />
+							</div>
+						</li>
+						<li>
+							<div class="count-box">
+								<span>5</span>
+							</div>
+							<div class="text-box">
+								<p><input type="text" disabled style="width:500px;border: 0px" name="step" th:value="${steplist[4].step}"></p>
+							</div>
+							<div>
+								<img th:src="${steplist[4].picture}" />
+							</div>
+						</li>
+						<li>
+							<div class="count-box">
+								<span>6</span>
+							</div>
+							<div class="text-box">
+								<p><input type="text" disabled style="width:500px;border: 0px" name="step" th:value="${steplist[5].step}"></p>
+							</div>
+							<div>
+								<img th:src="${steplist[5].picture}" />
+							</div>
+						</li>
+					</ul>
+				</div>
+				
+			</div>
+			<div class="col-md-5">
+				<div class="content-box-wrapper">
+					<div class="title-box">
+						<div class="top-meta clearfix">
+							<div class="pull-left author">
+								<span>作者:<input type="text" disabled style="border: 0px" name="uname" th:value="${steplist[0].user.uname}"></span>
+							</div>
+						</div>
+						<div class="title">
+							<h3><input type="text" disabled style="border: 0px" name="cname" th:value="${steplist[0].cookBook.cname}"></h3>
 						</div>
 					</div>
-					<div class="content-box">
-						<h3><input type="text" disabled style="border: 0px" name="cname" th:value="${cklist[0].cname}"></h3>
-						<span>作者:<input type="text" disabled style="border: 0px" name="uname" th:value="${cklist[0].user.uname}"></span>
-						<div class="inner-meta clearfix">
-							<div class="pull-left time">
-								<i class="icon icon-Timer"></i>1小时之前
-							</div>
-							<div class="pull-right read-more">
-								<a href="/user/single-recipe?cid=1">查看详情</a>
-							</div>
+					<div class="ingredients contact-form">
+						<div class="sec-title">
+							<h2>配料表</h2>
 						</div>
+						<ul class="special-checkbox">
+							<li>
+		                    	<span class="input-checker">
+									<input type="checkbox" name="apt_vehicle_services_needed" value="">
+		                    	</span>1/2杯切碎的红洋葱</li>
+		                    <li>
+		                    	<span class="input-checker">
+									<input type="checkbox" name="apt_vehicle_services_needed" value="">
+		                    	</span>2盎司柠檬滴chupas chups熊</li>
+		                    <li>
+		                    	<span class="input-checker">
+									<input type="checkbox" name="apt_vehicle_services_needed" value="">
+		                    	</span>3磅seasme按扣姜饼粉</li>
+		                    <li>
+		                    	<span class="input-checker">
+									<input type="checkbox" name="apt_vehicle_services_needed" value="">
+		                    	</span>1/4杯枣冻果冻</li>
+		                    <li>
+		                    	<span class="input-checker">
+									<input type="checkbox" name="apt_vehicle_services_needed" value="">
+		                    	</span>1/2杯酸奶油（可选）</li>
+		                    <li>
+		                    	<span class="input-checker">
+									<input type="checkbox" name="apt_vehicle_services_needed" value="">
+		                    	</span>1盎司suger李子糕点水果蛋糕</li>
+		                    <li>
+		                    	<span class="input-checker">
+									<input type="checkbox" name="apt_vehicle_services_needed" value="">
+		                    	</span>1/4杯枣冻果冻</li>
+						</ul>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-4 mix dessert lunch food">
-				<div class="single-recent-recipes img-cap-effect">
-					<div class="img-box">
-						<img th:src="${cklist[1].picture}" alt="">
-						<div class="img-caption">
-							<div class="box-holder">
-								<ul>
-									<li><a href="/user/single-recipe2?cid=2"><i class="icon icon-Goto"></i></a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="content-box">
-						<h3><input type="text" disabled style="border: 0px" name="cname" th:value="${cklist[1].cname}"></h3>
-						<span>作者:<input type="text" disabled style="border: 0px" name="uname" th:value="${cklist[1].user.uname}"></span>
-						<div class="inner-meta clearfix">
-							<div class="pull-left time">
-								<i class="icon icon-Timer"></i>1小时之前
-							</div>
-							<div class="pull-right read-more">
-								<a href="/user/single-recipe2?cid=2">查看详情</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 mix beverage food">
-				<div class="single-recent-recipes img-cap-effect">
-					<div class="img-box">
-						<img th:src="${cklist[2].picture}" alt="">
-						<div class="img-caption">
-							<div class="box-holder">
-								<ul>
-									<li><a href="/user/single-recipe3?cid=3"><i class="icon icon-Goto"></i></a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="content-box">
-						<h3><input type="text" disabled style="border: 0px" name="cname" th:value="${cklist[2].cname}"></h3>
-						<span>作者:<input type="text" disabled style="border: 0px" name="uname" th:value="${cklist[2].user.uname}"></span>
-						<div class="inner-meta clearfix">
-							<div class="pull-left time">
-								<i class="icon icon-Timer"></i>1小时之前
-							</div>
-							<div class="pull-right read-more">
-								<a href="/user/single-recipe3?cid=3">查看详情</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>	
 		</div>
-		<ul class="page-navigation text-left">
-			<li><a href="#"><i class="fa fa-arrow-left"></i></a></li>
-			<li><span>1</span></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">4</a></li>
-			<li><a href="#">5</a></li>
-			<li><a href="#"><i class="fa fa-arrow-right"></i></a></li>			
-		</ul>
 	</div>
 </section>
+
+
+<section class=" blog-page single-post-page  browse-recipe single-recipe-page sec-padding">
+	<div class="thm-container">
+		<div class="row">
+			<div class="col-md-8 pull-left">
+					
+				<div class="single-post-wrapper">		
+
+					<div class="comments-box">
+						<div class="sec-title">
+							<h2>评论(1)</h2>
+						</div>
+						<div class="single-comment">
+							<div class="comment-img">
+								<img src="../static/images/blog-details/comment-1.png" alt="Awesome Image"/>
+							</div>
+							<div class="comment-text">
+								<div class="inner">
+									<h3>用户名<span>8月28</span></h3>
+									<p>评论详情</p>
+									<a href="#" class="reply-button">回复</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="comment-form">
+						<div class="sec-title">
+							<h2>留言</h2>
+						</div>
+						<form action="#" class="row">
+							<div class="col-md-12">
+								<textarea placeholder="Comments"></textarea>
+								<button type="submit" class="thm-btn"><i class="icon icon-Goto"></i>提交</button>
+							</div>
+						</form>
+					</div>
+
+				</div>				
+
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+
+
 
 <section class="bottom-bar text-center">
 	<div class="thm-container clearfix">

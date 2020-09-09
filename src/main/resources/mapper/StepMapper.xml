@@ -17,11 +17,12 @@
         <collection property="cookBook" ofType="com.aaa.entity.CookBook">
             <id column="cid" property="cid"></id>
             <result property="cname" column="cname"></result>
+            <result property="picture" column="picture"></result>
         </collection>
 
     </resultMap>
     <select id="findStep" resultMap="StepMapper">
-        select s.*,u.uid,u.uname,c.cid,c.cname from step s
+        select s.*,u.uid,u.uname,c.cid,c.cname,c.picture as 'pic' from step s
 left join cookbook c on c.cid=s.cstepid
 LEFT JOIN cookuser cu on cu.ccuid = c.cid
 LEFT JOIN user u on u.uid = cu.ucuid

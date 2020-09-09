@@ -46,6 +46,18 @@ public class UserController {
         model.addAttribute("steplist",list);
         return "single-recipe";
     }
+    @RequestMapping("single-recipe2")
+    public String single_recipe2(Model model,Integer cid){
+        List<Step> list = stepService.findStep(cid);
+        model.addAttribute("steplist",list);
+        return "single-recipe2";
+    }
+    @RequestMapping("single-recipe3")
+    public String single_recipe3(Model model,Integer cid){
+        List<Step> list = stepService.findStep(cid);
+        model.addAttribute("steplist",list);
+        return "single-recipe3";
+    }
     //跳转博客
     @RequestMapping("blog-right")
     public String blog_right(){
