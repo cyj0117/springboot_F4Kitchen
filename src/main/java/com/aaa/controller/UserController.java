@@ -29,16 +29,13 @@ public class UserController {
     @RequestMapping("loginUser")
     @ResponseBody
     public List<User> loginUser(HttpSession session,String account,String password){
+        System.out.println(account);
+        System.out.println(password);
         List<User> users = Impl.login(account, password);
         session.setAttribute("list",users);
         System.out.println("登录:"+users);
         return users;
     }
-//    //进入主界面
-//    @RequestMapping("main")
-//    public String main(){
-//        return "index";
-//    }
 
     @Resource
     StepServiceImpl stepService;

@@ -15,8 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -193,6 +191,7 @@ public class UtilsController {
     CookBookServiceImpl cookBookService;
     @RequestMapping("findCookBook")
     public List<CookBook> listAll(){
+
         return cookBookService.listAll();
     }
     @RequestMapping(value = "deleteCookBook/{cid}",method = RequestMethod.GET )

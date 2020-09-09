@@ -75,9 +75,9 @@
 	<div class="c-banner">
 	<div class="banner">
 		<ul>
-			<li><img src="../static/images/1-1.jpg"></li>
-			<li><img src="../static/images/2-1.jpg"></li>
-			<li><img src="../static/images/3-1.jpg"></li>
+			<li><img src="../static/images/recent-recipes/13-1.jpg"></li>
+			<li><img src="../static/images/recent-recipes/1-1.jpg"></li>
+			<li><img src="../static/images/recent-recipes/2-1.jpg"></li>
 		</ul>
 	</div>
 	<div class="nexImg">
@@ -105,7 +105,7 @@
 			<div class="col-md-4">
 				<div class="single-recent-recipes img-cap-effect">
 					<div class="img-box">
-						<img src="../static/images/recent-recipes/1.jpg" alt="">
+						<img src="../static/images/recent-recipes/13-1.jpg" alt="">
 						<div class="img-caption">
 							<div class="box-holder">
 								<ul>
@@ -114,10 +114,9 @@
 							</div>
 						</div>
 					</div>
-					<span th:each="list:${cookbooklist[0]}">
 					<div class="content-box">
-						<h3><input type="text" disabled style="border: 0px" name="cname" th:value="${list.cname}"></h3>
-						<span>作者:</span><span><input type="text" disabled style="border: 0px" name="cname" th:value="${list.user.uname}"></span>
+						<h3><input type="text" disabled style="border: 0px" name="cname" th:value="${cookbooklist[0].cname}"></h3>
+						<span>作者:</span><span><input type="text" disabled style="border: 0px" name="cname" th:value="${cookbooklist[0].user.uname}"></span>
 						<div class="inner-meta clearfix">
 							<div class="pull-left time">
 								<i class="icon icon-Timer"></i>1小时之前
@@ -127,13 +126,12 @@
 							</div>
 						</div>
 					</div>
-					</span>
 				</div>
 			</div>
 			<div class="col-md-4">
 				<div class="single-recent-recipes img-cap-effect">
 					<div class="img-box">
-						<img src="../static/images/recent-recipes/2.jpg" alt="">
+						<img src="../static/images/recent-recipes/1-1.jpg" alt="">
 						<div class="img-caption">
 							<div class="box-holder">
 								<ul>
@@ -142,10 +140,9 @@
 							</div>
 						</div>
 					</div>
-					<span th:each="list:${cookbooklist[1]}">
 					<div class="content-box">
-						<h3><input type="text" disabled style="border: 0px" name="cname" th:value="${list.cname}"></h3>
-						<span>作者:</span><span><input type="text" disabled style="border: 0px" name="cname" th:value="${list.user.uname}"></span>
+						<h3><input type="text" disabled style="border: 0px" name="cname" th:value="${cookbooklist[1].cname}"></h3>
+						<span>作者:</span><span><input type="text" disabled style="border: 0px" name="cname" th:value="${cookbooklist[1].user.uname}"></span>
 						<div class="inner-meta clearfix">
 							<div class="pull-left time">
 								<i class="icon icon-Timer"></i>1小时之前
@@ -155,13 +152,12 @@
 							</div>
 						</div>
 					</div>
-					</span>
 				</div>
 			</div>
 			<div class="col-md-4">
 				<div class="single-recent-recipes img-cap-effect">
 					<div class="img-box">
-						<img src="../static/images/recent-recipes/3.jpg" alt="">
+						<img src="../static/images/recent-recipes/2-1.jpg" alt="">
 						<div class="img-caption">
 							<div class="box-holder">
 								<ul>
@@ -170,10 +166,9 @@
 							</div>
 						</div>
 					</div>
-					<span th:each="list:${cookbooklist[2]}">
 					<div class="content-box">
-						<h3><input type="text" disabled style="border: 0px" name="cname" th:value="${list.cname}"></h3>
-						<span>作者:</span><span><input type="text" disabled style="border: 0px" name="cname" th:value="${list.user.uname}"></span>
+						<h3><input type="text" disabled style="border: 0px" name="cname" th:value="${cookbooklist[2].cname}"></h3>
+						<span>作者:</span><span><input type="text" disabled style="border: 0px" name="cname" th:value="${cookbooklist[2].user.uname}"></span>
 						<div class="inner-meta clearfix">
 							<div class="pull-left time">
 								<i class="icon icon-Timer"></i>1小时之前
@@ -183,7 +178,6 @@
 							</div>
 						</div>
 					</div>
-					</span>
 				</div>
 			</div>
 			

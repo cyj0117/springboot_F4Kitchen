@@ -8,4 +8,5 @@ public interface CookBookDao {
     List<CookBook> listAll();
     Integer delete(Integer cid);
     List<CookBook> findCookBook();
+
 }
