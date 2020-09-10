@@ -42,4 +42,14 @@ public class UserServiceImpl implements UserDao {
     public List<User> login(String account, String password) {
         return userDao.login(account, password);
     }
+
+    @Override
+    public List<User> findAccount(String account) {
+        return userDao.findAccount(account);
+    }
+
+    @Override
+    public List<User> findPhone(String phone) {
+        return userDao.findPhone(phone);
+    }
 }

@@ -120,4 +120,40 @@ public class UserController {
         model.addAttribute("ckbklist",list);
         return "browse-recipes";
     }
+
+    @Resource
+    UserServiceImpl userService;
+    @RequestMapping("addUser")
+    @ResponseBody
+    public Integer addUser(String account,String phone,String name,String password,String gender){
+
+        List<User> list = userService.findAccount(account);
+        List<User> query = userService.findPhone(phone);
+        System.out.println(name);
+        System.out.println(account);
+        System.out.println(password);
+        System.out.println(gender);
+        System.out.println(phone);
+        if (list.size() != 0){
+            System.out.println("账号已存在");
+            return 0;
+        }else {
+            System.out.println("账号不存在");
+            if (query.size() != 0){
+                System.out.println("电话已存在");
+                return 1;
+            }else {
+                System.out.println("电话不存在");
+                User user = new User();
+                user.setUname(name);
+                user.setAccount(account);
+                user.setPassword(password);
+                user.setGender(gender);
+                user.setPhone(phone);
+                Integer addUser = userService.addUser(user);
+                return 2;
+            }
+        }
+    }
+
 }

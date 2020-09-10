@@ -19,4 +19,10 @@ public interface UserDao {
     @Select("select * from user where account = #{param1} and password = #{param2}")
     List<User> login( String account,String password);
 
+
+    List<User> findAccount(String account);
+
+    List<User> findPhone(String phone);
+
+
 }

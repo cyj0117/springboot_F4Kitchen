@@ -40,4 +40,17 @@
         update user set bantime = now(),state=#{state} where uid=#{uid}
     </update>
 
+
+
+    <insert id="addUser">
+        insert into user values(null,#{uname},#{account},#{password},#{gender},#{phone},0,now(),null,0)
+    </insert>
+    <select id="findAccount" resultMap="UserMapper">
+    select account from user where account = #{account}
+    </select>
+
+    <select id="findPhone" resultMap="UserMapper">
+    select phone from user where phone = #{phone}
+    </select>
+
 </mapper>
