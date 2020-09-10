@@ -28,13 +28,21 @@ public class UserController {
     //调用登录方法
     @RequestMapping("loginUser")
     @ResponseBody
-    public List<User> loginUser(HttpSession session,String account,String password){
+    public List<User> loginUser(HttpSession session, String account, String password){
         System.out.println(account);
         System.out.println(password);
         List<User> users = Impl.login(account, password);
         session.setAttribute("list",users);
         System.out.println("登录:"+users);
         return users;
+    }
+    //个人中心
+    @RequestMapping("selectuser")
+    public String selectuser(Model model,Integer uid){
+        System.out.println("id="+uid);
+        List<User> list = Impl.findById(uid);
+        model.addAttribute("userlist",list);
+        return "user-account";
     }
 
     @Resource

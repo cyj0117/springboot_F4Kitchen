@@ -132,7 +132,8 @@
 							if (data.data == '') {
 								alert("登录失败")
 							} else {
-								alert("登录成功！");
+								alert("登录成功！")
+								console.log(data.data)
 								sessionStorage.setItem("userInfo", JSON.stringify(data.data));
 								location.href = "/user/main";
 							}

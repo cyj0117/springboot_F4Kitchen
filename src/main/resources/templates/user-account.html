@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<title>个人中心</title>
@@ -62,7 +62,7 @@
 					<li class="has-submenu"><a href="/user/blog-right"><i class="flaticon-food-3"></i>博客</a></li>
 					<li class="has-submenu"><a href="/user/login"><i class="flaticon-tool"></i>登录</a></li>
 					<li><a href="/user/register"><i class="flaticon-food-1"></i>注册</a></li>
-					<li><a href="/user/user-account"><i class="flaticon-food"></i>个人中心</a></li>
+					<li><a href="/user/selectuser?uid=1"><i class="flaticon-food"></i>个人中心</a></li>
 				</ul>
 			</div>
 		</div>
@@ -93,33 +93,37 @@
 					</div>
 					<div class="content-box">
 						<div class="title">
-							<h3>陈宇杰</h3>
+							<h3></h3>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-5">
-				<div class="request-recipes">
+				<div class="request-recipes" th:each="u : ${userlist}">
+				<!--	<tr>
+						<td>用户名：</td>
+						<td th:text="${u.uname}"></td>
+					</tr>-->
 					<h2>个人信息</h2>
 					<ul>
-						<span>用户名：</span>
-		                <span>陈宇杰</span>
+						<td>用户名：</td>
+		                <td th:text="${u.uname}"></td>
 					</ul>
 					<ul>
 						<span>账号：</span>
-		                <span>123456</span>
+		                <span th:text="${u.account}"></span>
 					</ul>
 					<ul>
 						<span>性别：</span>
-		                <span>男</span>
+		                <span th:text="${u.gender}"></span>
 					</ul>
 					<ul>
 						<span>电话：</span>
-		                <span>13721451955</span>
+		                <span th:text="${u.phone}"></span>
 					</ul>
 					<ul>
 						<span>创建时间：</span>
-		                <span>2020-08-24 16:50:13</span>
+		                <span th:text="${u.usertime}"></span>
 					</ul>
 					<div class="input-box">
 						<a href="/user/submit-recipe" class="thm-btn">上传菜谱</a>
@@ -132,6 +136,7 @@
 
 
 
+<!--
 <section class="recipe-user-content sec-padding">
 	<div class="thm-container">
 		<div class="tab-title">
@@ -234,10 +239,12 @@
 		</div>
 	</div>
 </section>
+-->
 
 
 
 
+<!--
 
 <section class="bottom-bar text-center">
 	<div class="thm-container clearfix">
@@ -245,6 +252,7 @@
 	</div>
 </section>
 
+-->
 
 <!-- JS -->
 <!-- jQuery js -->

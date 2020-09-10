@@ -17,6 +17,10 @@ public class UserServiceImpl implements UserDao {
         return userDao.findAll();
     }
 
+    @Override
+    public List<User> findById(Integer uid) {
+        return userDao.findById(uid);
+    }
 
 
     @Override

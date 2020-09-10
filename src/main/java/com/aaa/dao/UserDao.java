@@ -10,6 +10,8 @@ import java.util.List;
 
 public interface UserDao {
     List<User> findAll();
+
+    List<User> findById(Integer uid);
     //修改用户的状态
     Integer addUser(User user);
     Integer updateUser(User user);

@@ -63,7 +63,7 @@
 					<li class="has-submenu"><a href="/user/blog-right"><i class="flaticon-food-3"></i>博客</a></li>
 					<li class="has-submenu"><a href="/user/login"><i class="flaticon-tool"></i>登录</a></li>
 					<li><a href="/user/register"><i class="flaticon-food-1"></i>注册</a></li>
-					<li><a href="/user/user-account"><i class="flaticon-food"></i>个人中心</a></li>
+					<li><a href="/user/selectuser?uid=1"><i class="flaticon-food"></i>个人中心</a></li>
 				</ul>
 			</div>
 		</div>
@@ -118,9 +118,9 @@
 						<h3><input type="text" disabled style="border: 0px" name="cname" th:value="${cookbooklist[0].cname}"></h3>
 						<span>作者:</span><span><input type="text" disabled style="border: 0px" name="cname" th:value="${cookbooklist[0].user.uname}"></span>
 						<div class="inner-meta clearfix">
-							<div class="pull-left time">
+						<!--	<div class="pull-left time">
 								<i class="icon icon-Timer"></i>1小时之前
-							</div>
+							</div>-->
 							<div class="pull-right read-more">
 								<a href="/user/single-recipe?cid=1">查看详情</a>
 							</div>
@@ -144,9 +144,9 @@
 						<h3><input type="text" disabled style="border: 0px" name="cname" th:value="${cookbooklist[1].cname}"></h3>
 						<span>作者:</span><span><input type="text" disabled style="border: 0px" name="cname" th:value="${cookbooklist[1].user.uname}"></span>
 						<div class="inner-meta clearfix">
-							<div class="pull-left time">
+							<!--<div class="pull-left time">
 								<i class="icon icon-Timer"></i>1小时之前
-							</div>
+							</div>-->
 							<div class="pull-right read-more">
 								<a href="/user/single-recipe2?cid=2">查看详情</a>
 							</div>
@@ -170,9 +170,9 @@
 						<h3><input type="text" disabled style="border: 0px" name="cname" th:value="${cookbooklist[2].cname}"></h3>
 						<span>作者:</span><span><input type="text" disabled style="border: 0px" name="cname" th:value="${cookbooklist[2].user.uname}"></span>
 						<div class="inner-meta clearfix">
-							<div class="pull-left time">
+							<!--<div class="pull-left time">
 								<i class="icon icon-Timer"></i>1小时之前
-							</div>
+							</div>-->
 							<div class="pull-right read-more">
 								<a href="/user/single-recipe3?cid=3">查看详情</a>
 							</div>
