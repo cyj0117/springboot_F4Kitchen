@@ -112,6 +112,8 @@
 </div>
 <script src="../static/vue.js"></script>
 <script src="../static/axios.min.js"></script>
+<script src="../static/layui-v2.5.6/layui/layui.js"></script>
+<script src="../static/layui-v2.5.6/layui/layui.all.js"></script>
 <script>
 	new Vue({
 		el:"#a",
@@ -130,18 +132,21 @@
 					if(_this.account != '') {
 						if(_this.password !=''){
 							if (data.data == '') {
-								alert("登录失败")
+								layer.msg('登录失败', { icon: 5, time: 1000, shade: [0.6, '#000', true] });
 							} else {
-								alert("登录成功！")
-								console.log(data.data)
-								sessionStorage.setItem("userInfo", JSON.stringify(data.data));
-								location.href = "/user/main";
+								layer.msg('登录成功', { icon: 6, shade: [0.6, '#000', true],
+									btn:["确定"],
+									yes:function () {
+										sessionStorage.setItem("userInfo", JSON.stringify(data.data));
+										location.href = "/user/main";
+									}
+								});
 							}
 						}else {
-							alert("密码不能为空！");
+							layer.msg('密码不能为空！', { icon: 2, time: 1000, shade: [0.6, '#000', true] });
 						}
 					}else {
-						alert("账号不能为空！");
+						layer.msg('账号不能为空！', { icon: 2, time: 1000, shade: [0.6, '#000', true] });
 					}
 				})
 

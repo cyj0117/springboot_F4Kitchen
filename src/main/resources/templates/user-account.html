@@ -36,6 +36,8 @@
 	<link rel="stylesheet" href="../static/css/style.css">
 	<!-- responsive stylesheet -->
 	<link rel="stylesheet" href="../static/css/responsive.css">
+	<link rel="stylesheet" href="../static/layui-v2.5.6/layui/css/layui.css">
+	<link rel="stylesheet" href="../static/layui-v2.5.6/layui/css/layui.mobile.css">
 
 
 
@@ -99,41 +101,69 @@
 				</div>
 			</div>
 			<div class="col-md-5">
-				<div class="request-recipes" th:each="u : ${userlist}">
+				<div id="content" class="request-recipes" style="height: 250px">
 				<!--	<tr>
 						<td>用户名：</td>
 						<td th:text="${u.uname}"></td>
 					</tr>-->
 					<h2>个人信息</h2>
 					<ul>
-						<td>用户名：</td>
-		                <td th:text="${u.uname}"></td>
+						<span>用户名：</span>
+		                <span class="uname" ></span>
 					</ul>
 					<ul>
 						<span>账号：</span>
-		                <span th:text="${u.account}"></span>
+		                <span class = "account"></span>
 					</ul>
 					<ul>
 						<span>性别：</span>
-		                <span th:text="${u.gender}"></span>
+		                <span class="gender"></span>
 					</ul>
 					<ul>
 						<span>电话：</span>
-		                <span th:text="${u.phone}"></span>
+		                <span class="phone"></span>
 					</ul>
 					<ul>
 						<span>创建时间：</span>
-		                <span th:text="${u.usertime}"></span>
+		                <span class="usertime" ></span>
 					</ul>
-					<div class="input-box">
-						<a href="/user/submit-recipe" class="thm-btn">上传菜谱</a>
-					</div>
+					<center>
+						<div class="input-box" style="margin-top: 20px">
+							<button  onclick="loginout()" type="button" class="layui-btn layui-btn-danger layui-btn-radius">退出登录</button>
+						</div>
+					</center>
+
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
 
+<script>
+	/*location.href = "/user/login";*/
+    window.onload=function () {
+        var users = JSON.parse(window.sessionStorage.getItem("userInfo"));
+        if(users == null){
+        	$("#content").html("<center style='margin-top: 40px'><h2>无用户信息，请先登录！</h2><br/>" +
+					"<button type=\"button\" class= 'layui-btn layui-btn-normal layui-btn-radius' onclick='login()'>登录</button></center>")
+		}else{
+			var user = users[0];
+			$(".uname").html(user.uname);
+			$(".account").html(user.account);
+			$(".gender").html(user.gender);
+			$(".phone").html(user.phone);
+			$(".usertime").html(user.usertime);
+		}
+    }
+    function login() {
+		location.href = "/user/login";
+	}
+
+	function loginout() {
+		window.sessionStorage.clear();
+		location.href = "/user/login";
+	}
+</script>
 
 
 <!--

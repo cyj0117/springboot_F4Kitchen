@@ -36,12 +36,17 @@ public class UserController {
         System.out.println("登录:"+users);
         return users;
     }
-    //个人中心
+    /*//个人中心
     @RequestMapping("selectuser")
     public String selectuser(Model model,Integer uid){
         System.out.println("id="+uid);
         List<User> list = Impl.findById(uid);
         model.addAttribute("userlist",list);
+        return "user-account";
+    }
+*/
+    @RequestMapping("selectuser")
+    public String selectuser(){
         return "user-account";
     }
 
