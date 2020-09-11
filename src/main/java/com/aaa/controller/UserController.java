@@ -6,18 +6,25 @@ import com.aaa.entity.User;
 import com.aaa.service.impl.CookBookServiceImpl;
 import com.aaa.service.impl.StepServiceImpl;
 import com.aaa.service.impl.UserServiceImpl;
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("user")
 public class UserController {
+    Integer usid = 0;
     @Resource
     UserServiceImpl Impl;
     //登录界面
@@ -126,7 +133,6 @@ public class UserController {
     @RequestMapping("addUser")
     @ResponseBody
     public Integer addUser(String account,String phone,String name,String password,String gender){
-
         List<User> list = userService.findAccount(account);
         List<User> query = userService.findPhone(phone);
         System.out.println(name);
@@ -156,4 +162,35 @@ public class UserController {
         }
     }
 
+    @RequestMapping("uploadFile")
+    @ResponseBody
+    public Object editFile(@RequestParam("file") MultipartFile file, String name){
+        CookBook cookbook = new CookBook();
+        //String cname = String.valueOf(name);
+        cookbook.setCname(name);
+        System.out.println(file);
+        //文件原名称
+        String filename = file.getOriginalFilename();
+        //文件新名称
+        String newFilename = UUID.randomUUID().toString().replace("-","")+"."+ FilenameUtils.getExtension(filename);
+        try {
+            //获取图片的绝对路径
+            String s = ResourceUtils.getURL("classpath:").getPath() + "/static/images";
+            //获取存放图片的相对路径
+            String news = "/static/images/" +newFilename;
+            cookbook.setPicture(news);
+            File fileDir = new File(s);
+            if (!fileDir.exists()){
+                System.out.println("我进来了");
+                //创建目录(多级)
+                fileDir.mkdirs();
+            }
+            file.transferTo(new File(fileDir,newFilename));
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        Integer add =userService.uploadFile(cookbook);
+        return add;
+    }
 }

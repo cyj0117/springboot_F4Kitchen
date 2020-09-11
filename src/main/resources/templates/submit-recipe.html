@@ -39,6 +39,32 @@
 	
 	
 </head>
+<script>
+	function uploadFile() {
+		var myfrom = new FormData();
+		myfrom.append('file',$("#file")[0].files[0]);
+		let name = $("input[id='name']").val();
+		myfrom.append('name',name);
+		alert(name)
+		$.ajax({
+			url: "uploadFile",
+			type: "POST",
+			data: myfrom,
+			async: false,
+			contentType: false,
+			processData: false,
+			success: function (result) {
+				alert(result);
+			},
+			error: function (data) {
+				console.log(data)
+			}
+		});
+	}
+
+</script>
+
+
 <body>
 
 <header id="header" class="stricky">
@@ -118,7 +144,7 @@
                     </dd>
                 </dl>
                 <dl class="mt30">
-                    <dt class="cg1 font16">步骤<span class="cod ml10 font12">必填</span> <span class=" ml10 font12">最后一步图片做封面</span></dt>
+                    <dt class="cg1 font16">步骤<span class="cod ml10 font12">必填</span> <span class=" ml10 font12">封面图</span></dt>
                     
 					<dd class="mt12" id="picupload">
 						<ul id="queue" class='steps'>
@@ -126,7 +152,7 @@
 							<li id='picfile'>
                                 <a class="pa" href="###">
                                     <i class="icon-add"></i>
-                                    <input type="file" accept=".jpg,.gif,.png" name="files[]" multiple="multiple"	class="file-ipt" title="上传">
+                                    <input type="file" accept=".jpg,.gif,.png" name="files[]" multiple="multiple"	class="file-ipt" title="上传" id="file">
                                 </a>
                             </li>
 						</ul>
@@ -153,12 +179,8 @@
                     <input type="hidden"  name="check" id="check"/>
                 </dl>
                 </div>
-	
-			<div class="table-title clearfix cg2 mt30">
-                <div class="fl w410 font20">高级选项</div> 
-                <a class="fr font16 cb retract" id="more_options" href="" tabindex="-1">展开<i class="icon-angle-double-down cg2"></i></a>
-            	<a  id="less_options" href="" tabindex="-1" class="fr font16 cb retract hide">收起<i class="icon-angle-double-up cg2"></i></a>
-            </div>
+
+
 			<div class="w670">
                 <dl class="mt30 hide options">
                     <dt class="cg1 font16">描述</dt>
@@ -175,11 +197,11 @@
                 <dl class="mt30 hide options">
                     <dt class="cg1 font16">分类</dt>
                     <dd class="mt12">
-                    
+
                     <input class="ui-ipt-long" id="tags" type="text" value="" tabindex="7" name="tags"/></dd>
                     <dd class="mt12" id="set_lables">
                     	</dd>
-                    
+
                 </dl>
                 <dl class="mt30 hide options">
                     <dt class="cg1 font16">转载自</dt>
@@ -188,18 +210,14 @@
                     </dd>
                 </dl>
                 <dl class="mt60b30">
-                    <a href="#" class="btn-small btn-grey" id="cancel" tabindex="21">关闭</a>
-                    <span class="fr">
-                    	<a class="btn-small btn-orange" id="entering" href="#" tabindex="22">存为草稿</a>
-                       			<a class="btn-small btn-orange ml22" href="#" id="save" tabindex="20">直接发布</a>
-							</span>
+                   <button onclick="uploadFile()">发布</button>
                 </dl>
             </div>
-            
+
 			<input type="hidden" name="shipustatus" id="shipustatus" value=""/>
 			<input type="hidden" name="shipuid" id="shipuid" value=""/>
 			<input type="hidden" name="categories" id="categories"  value=""/>
-            
+
             </form>
          </div>
 	 </div>

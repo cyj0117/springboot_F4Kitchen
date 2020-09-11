@@ -1,5 +1,6 @@
 package com.aaa.dao;
 
+import com.aaa.entity.CookBook;
 import com.aaa.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -24,5 +25,7 @@ public interface UserDao {
 
     List<User> findPhone(String phone);
 
+
+    Integer uploadFile(CookBook cookBook);
 
 }

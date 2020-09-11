@@ -53,4 +53,9 @@
     select phone from user where phone = #{phone}
     </select>
 
+    <insert id="uploadFile">
+        insert into cookbook values(null,#{cname},#{picture},now(),0)
+    </insert>
+
+
 </mapper>
