@@ -1,13 +1,16 @@
 package com.aaa.controller;
 
 import com.aaa.entity.CookBook;
+import com.aaa.entity.Discuss;
 import com.aaa.entity.Step;
 import com.aaa.entity.User;
 import com.aaa.service.impl.CookBookServiceImpl;
+import com.aaa.service.impl.DiscussServiceImpl;
 import com.aaa.service.impl.StepServiceImpl;
 import com.aaa.service.impl.UserServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -36,15 +39,7 @@ public class UserController {
         System.out.println("登录:"+users);
         return users;
     }
-    /*//个人中心
-    @RequestMapping("selectuser")
-    public String selectuser(Model model,Integer uid){
-        System.out.println("id="+uid);
-        List<User> list = Impl.findById(uid);
-        model.addAttribute("userlist",list);
-        return "user-account";
-    }
-*/
+
     @RequestMapping("selectuser")
     public String selectuser(){
         return "user-account";
@@ -71,11 +66,22 @@ public class UserController {
         model.addAttribute("steplist",list);
         return "single-recipe3";
     }
-    //跳转博客
-    @RequestMapping("blog-right")
-    public String blog_right(){
-        return "blog-right";
+    //评论查询
+    @Resource
+    DiscussServiceImpl discussService;
+    @ResponseBody
+    @RequestMapping("listAll")
+    private List<Discuss> details(Discuss discuss){
+        List<Discuss> list = discussService.listAll();
+        System.out.println(list);
+        return discussService.listAll();
     }
+    @RequestMapping("add")
+    private Integer add(@RequestBody Discuss discuss){
+      return discussService.add(discuss);
+
+    }
+
     //跳转注册
     @RequestMapping("register")
     public String register(){
