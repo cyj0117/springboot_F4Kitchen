@@ -32,7 +32,7 @@ public class RbacConfig {
                 }
             }
         }
-        return false;
+        return true;
     }
 
 }

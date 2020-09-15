@@ -1,6 +1,7 @@
 package com.aaa.service.impl;
 
 import com.aaa.dao.UserDao;
+import com.aaa.entity.CookBook;
 import com.aaa.entity.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -51,5 +52,10 @@ public class UserServiceImpl implements UserDao {
     @Override
     public List<User> findPhone(String phone) {
         return userDao.findPhone(phone);
+    }
+
+    @Override
+    public Integer uploadFile(CookBook cookBook) {
+        return userDao.uploadFile(cookBook);
     }
 }
